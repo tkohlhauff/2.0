@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myProgress {
+  width: 80%;
+  background-color: #5b5b5b;
+  border-radius: 25px;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #eff0f2;
+  border-radius: 25px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$.fn.upgrade = function (){
+        $("#upgraded").fadeIn(3000);
+        $("#upgraded").fadeOut(3000);
+		setTimeout(mainPage,7000);
+    };
+</script>
+<body onload="move()">
+
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+<div id="upgraded" style="display: none; font-size: 40px; font-family: 'Courier New', Courier, monospace;  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);"> UPGRADED TO 2.0</div>
+
+<br>
+
+<script>
+function move() {
+  var elem = document.getElementById("myBar");
+  var bar= document.getElementById("myProgress");
+  var width = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      elem.style.display="none";
+      bar.style.display="none";
+      $().upgrade();
+      
+      clearInterval(id);
+    } else {
+      width+=.1; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+function mainPage(){
+document.location.replace("https://www.yngbns.com/");
+}
+
+</script>
+
+</body>
+</html>
